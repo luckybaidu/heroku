@@ -36,7 +36,31 @@
 
  1. 为应用绑定域名，并将该域名接入 CloudFlare
  2. 通过 CloudFlare Workers 反向代理
-
+CloudFlare 反代
+在此处注册/登录CloudFlare（以下简称CF）账号
+转到workers页面
+创建workers
+把自带的代码换成下面这个
+const SingleDay = '应用程序名1.herokuapp.com'
+const DoubleDay = '应用程序名2.herokuapp.com'
+addEventListener(
+    "fetch",event => {
+    
+        let nd = new Date();
+        if (nd.getDate()%2) {
+            host = SingleDay
+        } else {
+            host = DoubleDay
+        }
+        
+        let url=new URL(event.request.url);
+        url.hostname=host;
+        let request=new Request(url,event.request);
+        event. respondWith(
+            fetch(request)
+        )
+    }
+)
 ## 注意
 
  1. **请勿滥用本专案，类似 Heroku 的免费服务少之又少，且用且珍惜**
