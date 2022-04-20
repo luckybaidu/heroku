@@ -1,7 +1,7 @@
 {
-    "name": "V2R",
-    "description": "Deploy V2R on Heroku.",
-    "keywords": ["V2R"],
+    "name": "RY",
+    "description": "Deploy RY on H.",
+    "keywords": ["RY"],
     "env": {
         "ID": {
             "description": "UUID",
